@@ -1,0 +1,37 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    {{ block "title" . }}
+    {{- .Title }} - {{ .Site.Title -}}
+    {{ end }}
+  </title>
+
+  {{- if .Params.Description }}
+    <meta name="description" content="{{ .Params.Description }}" />
+  {{ end -}}
+
+  {{- if .Keywords }}
+    <meta name="keywords" content="{{ delimit .Keywords "," }}" />
+  {{ end -}}
+
+  {{- if .Params.Author }}
+    <meta name="author" content="{{ .Params.Author }}" />
+  {{ end -}}
+
+  {{ $scss := resources.Get "scss/style.scss" }}
+  {{ $style := $scss | resources.ToCSS | postCSS (dict "config" "./postcss.config.js") }}
+
+  {{- if .Site.IsServer }}
+
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" >
+
+  {{ else }}
+
+    {{- $style := $style | minify | fingerprint | resources.PostProcess -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+  {{ end -}}
+
+</head>

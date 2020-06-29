@@ -1,0 +1,20 @@
+baseurl = "/"
+title = "Andrés Pérez"
+theme = "andresperez"
+languageCode = "es"
+
+[Params]
+    mainSections = ["post"]
+    intro = true
+    headline = "My headline"
+    description = "Mi blog personal"
+    author = "Andrés Pérez"
+    github = "https://github.com/Oxyrus"
+    twitter = "https://twitter.com/XXX"
+    email = "hola@andresperez.dev"
+    opengraph = true
+    shareTwitter = true
+    dateFormat = "Mon, Jan 2, 2006"
+
+[Permalinks]
+    post = "/:filename/"

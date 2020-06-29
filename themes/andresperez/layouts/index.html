@@ -1,0 +1,17 @@
+{{ define "main" }}
+
+<article class="text-center text-gray-700 pointer-events-none">
+  <h1 class="font-serif font-thin text-5xl text-gray-500">Mi rincón de código</h1>
+
+  {{- $image := resources.Get "img/foto.png" -}}
+
+  <img class="mx-auto rounded-full h-32 w-32 my-16" src="{{ $image.Permalink }}" alt="Andrés Pérez">
+
+  <p class="font-small font-thin text-gray-600 mb-12">¡Hola!, soy Andrés y aquí escribo lo que veo importante compartir.</p>
+
+  <a class="font-small font-thin text-base underline pointer-events-auto text-gray-500" href="/post">Ir a los artículos</a>
+
+  {{ .Content }}
+</article>
+
+{{ end }}
