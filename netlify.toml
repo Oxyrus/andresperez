@@ -1,2 +1,3 @@
 [build]
-  command = "npm i -g postcss-cli autoprefixer"
+  publish = "public"
+  command = "npm i -g postcss-cli autoprefixer && hugo --gc --minify"
