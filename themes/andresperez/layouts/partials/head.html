@@ -2,11 +2,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
+  <title>{{ if .Page.Title }}{{ .Page.Title }} - {{ end }}{{ .Site.Title }}</title>
+
+  <!--
   <title>
     {{ block "title" . }}
-    {{- .Title }} - {{ .Site.Title -}}
+      {{- .Title }} - {{ .Site.Title -}}
     {{ end }}
   </title>
+-->
 
   {{- if .Params.Description }}
     <meta name="description" content="{{ .Params.Description }}" />
@@ -29,8 +34,8 @@
 
   {{ else }}
 
-    {{- $style := $style | minify | fingerprint | resources.PostProcess -}}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+    {{- $style := $style | minify | resources.PostProcess -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
   {{ end -}}
 
